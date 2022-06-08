@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<form string="Employee" create="0" write="0" js_class="hr_employee_form">
+                    <header/>
+                    <sheet>
+                        <field name="user_id" invisible="1"/>
+                        <field name="user_partner_id" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Used by other modules-->
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <field name="image_1920" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image_128&quot;}"/>
+                            <div class="oe_title">
+                                <label for="name" class="oe_edit_only"/>
+                                <h1>
+                                    <field name="name" placeholder="Employee's Name" required="True"/>
+                                    <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>
+                                </h1>
+                                <h2>
+                                    <field name="job_title" placeholder="Job Title"/>
+                                </h2>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="work_email" widget="email" string="Member Email"/>
+                                    <field name="x_date_joined" widget="email" string="Member Join Date"/>
+                                    <field name="x_steam_id" widget="email" string="Steam ID Number"/>
+                                    <field name="x_discord_id" widget="email" string="Discord ID Number"/>
+                                    <field name="company_id" groups="base.group_multi_company"/>
+                                </group>
+                                <group>
+                                    <field name="department_id"/>
+                                    <field name="parent_id" string="Reports To"/>
+                                    <!-- <field name="coach_id"/> -->
+                                </group>
+                            </group>
+                        <notebook>
+                            <page name="public" string="S-1 Administration">
+                                <div id="o_work_employee_container"> <!-- These two div are used to position org_chart -->
+                                    <div id="o_work_employee_main">
+                                        <group string="Member Information" name="active_group">
+                                          <field name="job_id" string="Position/MOS"/>
+                                        </group>
+                                        <group name="managers" string="Approvers" invisible="1">
+                                            <!-- overridden in other modules -->
+                                        </group>
+                                        <!-- <group string="Schedule" groups="base.group_no_one">
+                                            <field name="resource_calendar_id"/>
+                                        </group> -->
+                                    </div>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            
