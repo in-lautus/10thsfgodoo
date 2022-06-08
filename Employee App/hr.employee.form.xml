@@ -43,26 +43,36 @@
                         </div>
                         <group>
                             <group>
-                                <field name="mobile_phone" widget="phone"/>
-                                <field name="work_phone" widget="phone"/>
-                                <field name="work_email" widget="email"/>
+                                <field name="work_email" widget="email" string="Member Email"/>
+                                <field name="x_date_joined" string="Member Join Date"/>
+                                <field name="x_steam_id" string="Steam ID Number"/>
+                                <field name="x_discord_id" string="Discord ID Number"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
                             </group>
                             <group>
                                 <field name="department_id"/>
-                                <field name="parent_id"/>
-                                <field name="coach_id"/>
+                                <field name="parent_id" string="Reports To"/>
+                                <!-- <field name="coach_id"/> -->
                             </group>
                         </group>
                         <notebook>
-                            <page name="public" string="Work Information">
+                            <page name="public" string="S-1 Administration">
                                 <div id="o_work_employee_container"> <!-- These two div are used to position org_chart -->
                                     <div id="o_work_employee_main">
-                                        <group string="Location">
-                                            <field name="address_id" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
-                                            <field name="work_location"/>
+                                        <group string="Member Information" name="active_group">
+                                          <field name="user_id" string="Related User" domain="[('share', '=', False)]"/>
+                                          <field name="job_id" string="Position/MOS"/>
                                         </group>
-                                        <group name="managers" string="Approvers" class="hide-group-if-empty">
+                                        <group string="Organizational Information">
+                                            <field name="address_id" string="Organizational Unit" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                                            <field name="department_id"/>
+                                            <!-- <field name="work_location"/> -->
+                                        </group>
+                                        <group string="Schedule">
+                                            <field name="resource_calendar_id" string="Availability Agreement" required="1"/>
+                                            <field name="tz"/>
+                                        </group>
+                                        <group name="managers" string="ELOA Approvers" class="hide-group-if-empty">
                                             <!-- is overridden in other hr related modules -->
                                         </group>
                                         <group name="departure" string="Departure" attrs="{'invisible': [('active', '=', True)]}">
@@ -70,14 +80,10 @@
                                             <field name="departure_description"/>
                                             <field name="departure_date"/>
                                         </group>
-                                        <group string="Schedule">
-                                            <field name="resource_calendar_id" required="1"/>
-                                            <field name="tz"/>
-                                        </group>
                                     </div>
                                 </div>
                             </page>
-                            <page name="personal_information" string="Private Information" groups="hr.group_hr_user">
+                            <!-- <page name="personal_information" string="Private Information" groups="hr.group_hr_user">
                                 <group>
                                     <group string="Private Contact">
                                         <field name="address_home_id" context="{                                                 'show_address': 1,                                                 'default_type': 'private',                                                 'form_view_ref': 'base.res_partner_view_form_private'}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
@@ -123,8 +129,8 @@
                                         <field name="study_school"/>
                                     </group>
                                 </group>
-                            </page>
-                            <page name="hr_settings" string="HR Settings" groups="hr.group_hr_user">
+                            </page> -->
+                            <!-- <page name="hr_settings" string="S-4 Settings" groups="hr.group_hr_user">
                                 <group>
                                     <group string="Status" name="active_group">
                                         <field name="user_id" string="Related User" domain="[('share', '=', False)]"/>
@@ -140,7 +146,11 @@
                                         </div>
                                     </group>
                                 </group>
-                            </page>
+                                <div id="o_employee_right">
+                                    <h4 class="o_org_chart_title mb16 mt0">Organization Chart</h4>
+                                    <field name="child_ids" widget="hr_org_chart"/>
+                                </div>
+                            </page> -->
                         </notebook>
 
                     </sheet>
@@ -150,3 +160,4 @@
                         <field name="message_ids"/>
                     </div>
                 </form>
+            
