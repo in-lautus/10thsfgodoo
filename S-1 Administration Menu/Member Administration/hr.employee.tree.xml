@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<tree string="Employees" multi_edit="1" sample="1">
+                    <field name="name" readonly="1"/>
+                    <!-- <field name="work_phone" class="o_force_ltr" readonly="1"/> -->
+                    <!-- <field name="work_email"/> -->
+                    <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                    <field name="department_id" string="Posting"/>
+                    <field name="job_id" string="Position/MOS"/>
+                    <field name="parent_id" string="Reports To"/>
+                    <!-- <field name="work_location" optional="hide"/> -->
+                    <field name="coach_id" invisible="1"/>
+                </tree>
+            

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<tree string="Job" sample="1">
+                    <field name="name" string="Postion"/>
+                    <field name="department_id"/>
+                    <field name="no_of_employee" string="Present Members"/>
+                    <field name="no_of_recruitment" string="Expected Members"/>
+                    <field name="expected_employees" string="Total Forecasted Members"/>
+                    <field name="no_of_hired_employee" string="Recruits"/>
+                    <field name="state"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            
