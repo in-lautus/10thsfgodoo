@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<kanban class="oe_background_grey o_kanban_dashboard o_hr_kanban" sample="1">
+                    <field name="name"/>
+                    <field name="company_id"/>
+                    <field name="manager_id"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                                <div t-attf-class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary"><field name="name"/></div>
+                                        <div class="o_secondary"><field name="company_id" groups="base.group_multi_company"/></div>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section" t-if="!selection_mode">
+                                        <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_content" t-if="!selection_mode">
+                                    <div class="row o_kanban_card_upper_content">
+                                        <div class="col-4 o_kanban_primary_left">
+                                            <button class="btn btn-primary" name="246" type="action">Employees</button>
+                                        </div>
+                                        <div class="col-8 o_kanban_primary_right">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                    <div class="o_kanban_card_manage_section">
+                                        <div role="menuitem" class="o_kanban_card_manage_section o_kanban_manage_reports">
+                                            <div class="o_kanban_card_manage_title">
+                                                <strong><span>Reporting</span></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a t-if="widget.editable" role="menuitem" class="dropdown-item" type="edit">Configuration</a>
+                                    <ul t-if="widget.editable" class="oe_kanban_colorpicker" data-field="color" role="menu"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            
